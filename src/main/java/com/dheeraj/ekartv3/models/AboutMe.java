@@ -30,12 +30,12 @@ public class AboutMe {
     public AboutMe(Config config) {
         this.config = config;
         this.service = Preconditions.checkNotNull(config.getString("service.name"), "Service has to be set");
-        this.version = Preconditions.checkNotNull(config.getString("service.version"), "Service has to be version");
-        this.buildDate = Preconditions.checkNotNull(config.getString("service.buildDate"), "Service has to be buildDate");
-        this.publicKey = Preconditions.checkNotNull(config.getString("service.publicKey"), "Service has to be publicKey");
-        this.privateKey = Preconditions.checkNotNull(config.getString("service.privateKey"), "Service has to be privateKey");
-        this.environment = Preconditions.checkNotNull(config.getString("service.environment"), "Service has to be environment");
-        this.apiHostDomain = Preconditions.checkNotNull(config.getString("service.apiHostDomain"), "Service has to be apiHostDomain");
+        this.version = Preconditions.checkNotNull(config.getString("service.version"), "Version has to be set");
+        this.buildDate = Preconditions.checkNotNull(config.getString("service.buildDate"), "Build date has to be set");
+        this.publicKey = Preconditions.checkNotNull(config.getString("service.publicKey"), "Public key has to be set");
+        this.privateKey = Preconditions.checkNotNull(config.getString("service.privateKey"), "Private key has to be set");
+        this.environment = Preconditions.checkNotNull(config.getString("service.environment"), "Environment has to be set");
+        this.apiHostDomain = Preconditions.checkNotNull(config.getString("service.apiHostDomain"), "Api host domain has to be set");
     }
 
     public String getService() {
