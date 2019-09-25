@@ -1,5 +1,6 @@
 package com.dheeraj.ekartv3.modules;
 
+import com.dheeraj.ekartv3.models.AboutMe;
 import com.dheeraj.ekartv3.services.ApiService;
 import com.dheeraj.ekartv3.services.Api;
 import com.dheeraj.ekartv3.services.HttpClient;
@@ -22,14 +23,15 @@ public class SecurityModule extends AbstractModule {
     private Config config;
 
     @Inject
-    public SecurityModule(Environment environment,Config config) {
+    public SecurityModule(Environment environment, Config config) {
         this.config = config;
     }
 
     @Override
     protected void configure() {
+        bind(AboutMe.class).asEagerSingleton();
         bind(Api.class).to(ApiService.class).in(Scopes.SINGLETON);
         bind(IHttpClient.class).to(HttpClient.class).in(Scopes.SINGLETON);
-        logger.info("Completed module binding for Security Module");
+        logger.info("Completed class binding for Security Module");
     }
 }
