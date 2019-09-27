@@ -1,13 +1,10 @@
 package com.dheeraj.ekartv3.util;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import play.libs.Json;
 
 import java.io.IOException;
 import java.util.Base64;
-import java.util.Collection;
 
 /**
  * @author Dheeraj Reddyt
