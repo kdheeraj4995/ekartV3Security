@@ -1,5 +1,6 @@
 package com.dheeraj.ekartv3.util;
 
+import com.google.common.base.Preconditions;
 import io.jsonwebtoken.*;
 
 /**
@@ -26,7 +27,16 @@ public class JwtHelper {
         } catch (SignatureException e) {
             throw e;
         } catch (JwtException e) {
-            // return Custom Invalid JWT Exception
+            throw e;
         }
+    }
+
+    public static String getJwtPayLoad(String jwt) {
+        Preconditions.checkArgument(!(jwt == null || jwt.isEmpty()), "Jwt cannot be null and empty, value:%s", jwt);
+        String[] s = jwt.split(".");
+        if (s.length != 3) {
+            throw new IllegalArgumentException("Invalid Jwt");
+        }
+        return s[1];
     }
 }

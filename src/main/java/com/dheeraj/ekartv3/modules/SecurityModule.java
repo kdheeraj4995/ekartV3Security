@@ -1,10 +1,14 @@
 package com.dheeraj.ekartv3.modules;
 
 import com.dheeraj.ekartv3.models.AboutMe;
+import com.dheeraj.ekartv3.services.ITokenGenerationService;
+import com.dheeraj.ekartv3.services.ITokenVerificationService;
 import com.dheeraj.ekartv3.services.implementations.ApiService;
 import com.dheeraj.ekartv3.services.Api;
 import com.dheeraj.ekartv3.services.implementations.HttpClient;
 import com.dheeraj.ekartv3.services.IHttpClient;
+import com.dheeraj.ekartv3.services.implementations.TokenGenerationService;
+import com.dheeraj.ekartv3.services.implementations.TokenVerificationServiceService;
 import com.dheeraj.ekartv3.util.JwtHelper;
 import com.dheeraj.ekartv3.util.StringHelper;
 import com.google.inject.AbstractModule;
@@ -34,6 +38,8 @@ public class SecurityModule extends AbstractModule {
         bind(AboutMe.class).asEagerSingleton();
         bind(Api.class).to(ApiService.class).in(Scopes.SINGLETON);
         bind(IHttpClient.class).to(HttpClient.class).in(Scopes.SINGLETON);
+        bind(ITokenGenerationService.class).to(TokenGenerationService.class).in(Scopes.SINGLETON);
+        bind(ITokenVerificationService.class).to(TokenVerificationServiceService.class).in(Scopes.SINGLETON);
         logger.info("Completed class binding for Security Module");
     }
 }
