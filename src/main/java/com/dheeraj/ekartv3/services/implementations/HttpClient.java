@@ -1,5 +1,6 @@
-package com.dheeraj.ekartv3.services;
+package com.dheeraj.ekartv3.services.implementations;
 
+import com.dheeraj.ekartv3.services.IHttpClient;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import play.libs.Json;

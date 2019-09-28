@@ -1,6 +1,5 @@
 package com.dheeraj.ekartv3.models;
 
-import com.dheeraj.ekartv3.helper.Constant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.common.base.Preconditions;

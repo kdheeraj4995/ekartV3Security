@@ -44,7 +44,7 @@ GET        /        com.dheeraj.ekartv3.controllers.PublicKeyController.aboutMe(
 
 Inject HttpClient directly into any Java class.
 ```java
-import com.dheeraj.ekartv3.services.HttpClient;
+
 import com.google.inject.Inject;
 
 @Inject
