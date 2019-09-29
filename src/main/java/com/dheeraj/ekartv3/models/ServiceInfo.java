@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ServerInfo {
+public class ServiceInfo {
     private String service;
     private String version;
     private String buildDate;

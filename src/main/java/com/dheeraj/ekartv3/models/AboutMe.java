@@ -5,12 +5,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Dheeraj Reddy
  */
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@Builder
 public class AboutMe {
 
     @JsonIgnore
@@ -37,59 +43,8 @@ public class AboutMe {
         this.apiHostDomain = Preconditions.checkNotNull(config.getString("service.apiHostDomain"), "Api host domain has to be set");
     }
 
-    public String getService() {
-        return service;
+    public AboutMe() {
     }
 
-    public void setService(String service) {
-        this.service = service;
-    }
 
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getBuildDate() {
-        return buildDate;
-    }
-
-    public void setBuildDate(String buildDate) {
-        this.buildDate = buildDate;
-    }
-
-    public String getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
-    }
-
-    public String getPrivateKey() {
-        return privateKey;
-    }
-
-    public void setPrivateKey(String privateKey) {
-        this.privateKey = privateKey;
-    }
-
-    public String getEnvironment() {
-        return environment;
-    }
-
-    public void setEnvironment(String environment) {
-        this.environment = environment;
-    }
-
-    public String getApiHostDomain() {
-        return apiHostDomain;
-    }
-
-    public void setApiHostDomain(String apiHostDomain) {
-        this.apiHostDomain = apiHostDomain;
-    }
 }
