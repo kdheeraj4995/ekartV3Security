@@ -36,7 +36,7 @@ public class TokenVerificationServiceService implements ITokenVerificationServic
     }
 
     private String getSenderPublicKey(String context) {
-        JsonNode serviceInfoJson = httpClient.get(getSenderServiceInfoUrl(context), null);
+        JsonNode serviceInfoJson = httpClient.get(getSenderServiceInfoUrl(context));
         ServiceInfo serviceInfo = Json.fromJson(serviceInfoJson, ServiceInfo.class);
         return serviceInfo.getPublicKey();
     }

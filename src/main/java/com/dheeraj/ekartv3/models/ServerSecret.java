@@ -1,9 +1,7 @@
 package com.dheeraj.ekartv3.models;
 
 import com.dheeraj.ekartv3.enums.TOKEN;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * @author Dheeraj Reddy
@@ -12,6 +10,8 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ServerSecret {
     private TOKEN token;
     private String context;

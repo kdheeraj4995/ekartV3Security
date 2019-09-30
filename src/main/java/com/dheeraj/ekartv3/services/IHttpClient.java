@@ -9,6 +9,8 @@ import java.util.Map;
  */
 public interface IHttpClient {
 
+    JsonNode get(String url);
+
     JsonNode get(String url, Map<String, String> headers);
 
     JsonNode post(String url, JsonNode body, Map<String, String> headers);

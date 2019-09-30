@@ -22,6 +22,12 @@ public class HttpClient implements IHttpClient {
     }
 
     @Override
+    public JsonNode get(String url) {
+        WSResponse wsResponse = getWsRequest(url, null).get().toCompletableFuture().join();
+        return generateJsonResponse(wsResponse);
+    }
+
+    @Override
     public JsonNode get(String url, Map<String, String> headers) {
         WSResponse wsResponse = getWsRequest(url, headers).get().toCompletableFuture().join();
         return generateJsonResponse(wsResponse);
@@ -48,7 +54,7 @@ public class HttpClient implements IHttpClient {
     private WSRequest updateHeaders(WSRequest wsRequest, Map<String, String> headers) {
         if (headers != null) {
             headers.entrySet().forEach(header -> {
-                wsRequest.setHeader(header.getKey(), header.getValue());
+                wsRequest.addHeader(header.getKey(), header.getValue());
             });
         }
         return wsRequest;

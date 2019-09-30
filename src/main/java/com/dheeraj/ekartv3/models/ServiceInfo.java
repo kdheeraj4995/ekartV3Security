@@ -1,7 +1,6 @@
 package com.dheeraj.ekartv3.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * @author Dheeraj Reddy
@@ -9,6 +8,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ServiceInfo {
     private String service;
     private String version;
