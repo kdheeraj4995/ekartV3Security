@@ -14,19 +14,18 @@ import com.google.inject.Inject;
 public class TokenGenerationService implements ITokenGenerationService {
 
     private AboutMe aboutMe;
-    private StringHelper stringHelper;
 
     @Inject
-    public TokenGenerationService(AboutMe aboutMe, StringHelper stringHelper) {
+    public TokenGenerationService(AboutMe aboutMe) {
         this.aboutMe = aboutMe;
-        this.stringHelper = stringHelper;
     }
 
     @Override
     public String generateServerToken() {
         ServerSecret serverSecret = getServerSecret();
-        String stringServerSecret = stringHelper.convertObjectToString(serverSecret);
-        return JwtHelper.generateJwtToken(stringServerSecret, aboutMe.getPrivateKey());
+        String stringServerSecret = StringHelper.convertObjectToString(serverSecret);
+        String serverToken = JwtHelper.generateJwtToken(stringServerSecret, aboutMe.getPrivateKey());
+        return serverToken;
     }
 
     private ServerSecret getServerSecret() {

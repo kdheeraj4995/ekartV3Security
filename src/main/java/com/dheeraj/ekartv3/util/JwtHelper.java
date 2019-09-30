@@ -35,7 +35,7 @@ public class JwtHelper {
 
     public static String getJwtPayLoad(String jwt) {
         Preconditions.checkArgument(!(jwt == null || jwt.isEmpty()), "Jwt cannot be null and empty, value:%s", jwt);
-        String[] s = jwt.split(".");
+        String[] s = jwt.split("\\.");
         if (s.length != 3) {
             throw new IllegalArgumentException("Invalid Jwt");
         }

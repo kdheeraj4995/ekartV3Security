@@ -10,12 +10,9 @@ import com.dheeraj.ekartv3.services.implementations.HttpClient;
 import com.dheeraj.ekartv3.services.implementations.TokenGenerationService;
 import com.dheeraj.ekartv3.services.implementations.TokenVerificationServiceService;
 import com.google.inject.AbstractModule;
-import com.google.inject.Inject;
 import com.google.inject.Scopes;
-import com.typesafe.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import play.Environment;
 
 /**
  * @author Dheeraj Reddy
@@ -23,13 +20,6 @@ import play.Environment;
 public class SecurityModule extends AbstractModule {
 
     Logger logger = LoggerFactory.getLogger(SecurityModule.class);
-
-    private Config config;
-
-    @Inject
-    public SecurityModule(Environment environment, Config config) {
-        this.config = config;
-    }
 
     @Override
     protected void configure() {
