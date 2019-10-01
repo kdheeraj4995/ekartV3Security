@@ -1,23 +1,32 @@
 package com.dheeraj.ekartv3.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.impl.crypto.MacProvider;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Map;
 
 /**
  * @author Dheeraj Reddyt
  */
-public class StringHelper {
+public class ObjectHelper {
 
     public static String convertObjectToString(Object object) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            throw new IllegalArgumentException("Cannot convert object to string");
+            throw new IllegalArgumentException("Cannot convert object to string, cause:" + e.getMessage());
         }
+    }
+
+    public static Map<String, Object> convertObjectToMap(Object object) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(object, Map.class);
+
     }
 
     public static String getBase64EncodedString(String s) {
@@ -34,9 +43,11 @@ public class StringHelper {
 
     public static <T> T convertStringToObject(String s, Class<T> className) {
         try {
-            return new ObjectMapper().readValue(s, className);
+            return new ObjectMapper()
+                    .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                    .readValue(s, className);
         } catch (IOException e) {
-            throw new IllegalArgumentException("Cannot convert string to object");
+            throw new IllegalArgumentException("Cannot convert string to object, cause:" + e.getMessage());
         }
     }
 

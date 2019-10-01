@@ -28,15 +28,42 @@ public class AboutMe {
     private String privateKey;
     @JsonIgnore
     private String apiHostDomain;
+    @JsonIgnore
+    private String serverTokenExpiry;
 
     public AboutMe() {
-        this.service = Preconditions.checkNotNull(getEnvironmentVariable("service.name"), "Service has to be set");
-        this.version = Preconditions.checkNotNull(getEnvironmentVariable("service.version"), "Version has to be set");
-        this.buildDate = Preconditions.checkNotNull(getEnvironmentVariable("service.buildDate"), "Build date has to be set");
-        this.publicKey = Preconditions.checkNotNull(getEnvironmentVariable("service.publicKey"), "Public key has to be set");
-        this.privateKey = Preconditions.checkNotNull(getEnvironmentVariable("service.privateKey"), "Private key has to be set");
-        this.environment = Preconditions.checkNotNull(getEnvironmentVariable("service.environment"), "Environment has to be set");
-        this.apiHostDomain = Preconditions.checkNotNull(getEnvironmentVariable("service.apiHostDomain"), "Api host domain has to be set");
+        this.service = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.name"),
+                "Service has to be set"
+        );
+        this.version = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.version"),
+                "Version has to be set"
+        );
+        this.buildDate = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.buildDate"),
+                "Build date has to be set"
+        );
+        this.publicKey = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.publicKey"),
+                "Public key has to be set"
+        );
+        this.privateKey = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.privateKey"),
+                "Private key has to be set"
+        );
+        this.environment = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.environment"),
+                "Environment has to be set"
+        );
+        this.apiHostDomain = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.apiHostDomain"),
+                "Api host domain has to be set"
+        );
+        this.serverTokenExpiry = Preconditions.checkNotNull(
+                getEnvironmentVariable("service.serverTokenExpiry"),
+                "Server token expiry has to be set"
+        );
     }
 
     private String getEnvironmentVariable(String variableName) {

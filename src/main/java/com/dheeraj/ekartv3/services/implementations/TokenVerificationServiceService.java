@@ -6,7 +6,7 @@ import com.dheeraj.ekartv3.models.ServiceInfo;
 import com.dheeraj.ekartv3.services.IHttpClient;
 import com.dheeraj.ekartv3.services.ITokenVerificationService;
 import com.dheeraj.ekartv3.util.JwtHelper;
-import com.dheeraj.ekartv3.util.StringHelper;
+import com.dheeraj.ekartv3.util.ObjectHelper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import play.libs.Json;
@@ -29,8 +29,8 @@ public class TokenVerificationServiceService implements ITokenVerificationServic
     @Override
     public void validateServerToken(String jwtToken) {
         String encodedPayloadString = JwtHelper.getJwtPayLoad(jwtToken);
-        String decodedPayloadString = StringHelper.decodeBase64EncodedString(encodedPayloadString);
-        ServerSecret serverSecret = StringHelper.convertStringToObject(decodedPayloadString, ServerSecret.class);
+        String decodedPayloadString = ObjectHelper.decodeBase64EncodedString(encodedPayloadString);
+        ServerSecret serverSecret = ObjectHelper.convertStringToObject(decodedPayloadString, ServerSecret.class);
         String senderPublicKey = getSenderPublicKey(serverSecret.getContext());
         JwtHelper.validateJwtToken(jwtToken, senderPublicKey);
     }
