@@ -5,14 +5,18 @@ import com.dheeraj.ekartv3.exceptions.EkartJwtExceptionType;
 import com.google.common.base.Preconditions;
 import io.jsonwebtoken.*;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * @author Dheeraj Reddy
  */
 public class JwtHelper {
 
-    public static String generateJwtToken(String body, String key) {
+    public static String generateJwtToken(Object claims, String key, String expiryInMins) {
         return Jwts.builder()
-                .setPayload(body)
+                .setClaims(ObjectHelper.convertObjectToMap(claims))
+                .setExpiration(getExpiryDateTime(expiryInMins))
                 .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
     }
@@ -40,5 +44,11 @@ public class JwtHelper {
             throw new IllegalArgumentException("Invalid Jwt");
         }
         return s[1];
+    }
+
+    private static Date getExpiryDateTime(String expiryInMins) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, Integer.parseInt(expiryInMins));
+        return new Date(calendar.getTimeInMillis());
     }
 }

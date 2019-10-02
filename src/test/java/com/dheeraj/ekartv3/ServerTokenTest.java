@@ -73,6 +73,7 @@ public class ServerTokenTest {
                 .privateKey(PublicPrivateKeyGenerator.convertKeyToString(publicPrivateKeys.getPrivateKey()))
                 .publicKey(PublicPrivateKeyGenerator.convertKeyToString(publicPrivateKeys.getPublicKey()))
                 .apiHostDomain("dev.ekart.com")
+                .serverTokenExpiry("1")
                 .build();
     }
 

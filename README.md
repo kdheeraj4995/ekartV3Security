@@ -15,6 +15,7 @@ PUBLIC_KEY
 PRIVATE_KEY
 ENVIRONMENT
 API_HOST_DOMAIN
+SERVER_TOKEN_EXPIRY
 ```
 
 Update app.conf to add the following code.
@@ -28,6 +29,7 @@ service = {
     privateKey = ${PRIVATE_KEY},
     environment = ${ENVIRONMENT},
     apiHostDomain = ${API_HOST_DOMAIN}
+    serverTokenExpiry = ${SERVER_TOKEN_EXPIRY}
 }
 
 play.modules = {

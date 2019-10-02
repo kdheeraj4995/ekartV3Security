@@ -5,7 +5,7 @@ import com.dheeraj.ekartv3.models.AboutMe;
 import com.dheeraj.ekartv3.models.ServerSecret;
 import com.dheeraj.ekartv3.services.ITokenGenerationService;
 import com.dheeraj.ekartv3.util.JwtHelper;
-import com.dheeraj.ekartv3.util.StringHelper;
+import com.dheeraj.ekartv3.util.ObjectHelper;
 import com.google.inject.Inject;
 
 /**
@@ -23,8 +23,8 @@ public class TokenGenerationService implements ITokenGenerationService {
     @Override
     public String generateServerToken() {
         ServerSecret serverSecret = getServerSecret();
-        String stringServerSecret = StringHelper.convertObjectToString(serverSecret);
-        String serverToken = JwtHelper.generateJwtToken(stringServerSecret, aboutMe.getPrivateKey());
+        String stringServerSecret = ObjectHelper.convertObjectToString(serverSecret);
+        String serverToken = JwtHelper.generateJwtToken(serverSecret, aboutMe.getPrivateKey(), aboutMe.getServerTokenExpiry());
         return serverToken;
     }
 
